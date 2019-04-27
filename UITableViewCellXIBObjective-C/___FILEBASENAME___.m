@@ -3,12 +3,35 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 #import "___FILEBASENAME___.h"
 
+@interface ___FILEBASENAMEASIDENTIFIER___ ()
+
+@end
+
 @implementation ___FILEBASENAMEASIDENTIFIER___
+
++ (instancetype)cellWithTableView:(UITableView *)tableView
+{
+    NSString *classStr = NSStringFromClass(self);
+    
+    cellID = [NSString stringWithFormat:@"%@ID",classStr];
+    UITableViewCell *baseCell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    DLog(@"=====>>>>%@",cellID);
+    if (baseCell == nil) {
+        baseCell = [[self alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        baseCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    /**< Incompatible pointer types returning */
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+    return baseCell;
+#pragma clang diagnostic pop
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
